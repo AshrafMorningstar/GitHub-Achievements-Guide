@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import BadgeCard from './components/BadgeCard';
 import GuideSection from './components/GuideSection';
 import Footer from './components/Footer';
+import ProfileChecker from './components/ProfileChecker';
 import { BADGES, FAQS } from './constants';
 import { HelpCircle, Scroll, Star } from 'lucide-react';
 
@@ -15,6 +16,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-github-dark font-sans selection:bg-blue-500/30">
       <Hero />
+      <ProfileChecker />
       <Navigation />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">

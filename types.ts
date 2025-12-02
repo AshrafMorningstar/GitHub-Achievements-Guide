@@ -35,3 +35,18 @@ export interface FaqItem {
   answer: string;
   fix?: string;
 }
+
+export interface GithubProfile {
+  login: string;
+  avatar_url: string;
+  html_url: string;
+  name: string | null;
+  public_repos: number;
+  followers: number;
+  bio: string | null;
+}
+
+export interface UserStats {
+  mergedPRs: number;
+  maxStars: number;
+}
