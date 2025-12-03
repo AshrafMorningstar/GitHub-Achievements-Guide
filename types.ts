@@ -12,6 +12,9 @@ export enum BadgeTier {
   Gold = 'Gold',
 }
 
+export type BadgeRarity = 'Common' | 'Uncommon' | 'Rare' | 'Legendary';
+export type BadgeCategory = 'Contribution' | 'Collaboration' | 'Community' | 'Program';
+
 export interface TierRequirement {
   tier: BadgeTier;
   description: string;
@@ -23,6 +26,8 @@ export interface Badge {
   emoji: string;
   description: string;
   status: BadgeStatus;
+  rarity: BadgeRarity;
+  category: BadgeCategory;
   tiers?: TierRequirement[];
   earnGuide?: string[];
   proTips?: string[];

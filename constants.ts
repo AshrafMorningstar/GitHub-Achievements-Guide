@@ -7,6 +7,8 @@ export const BADGES: Badge[] = [
     emoji: '🚀',
     description: 'Closed an issue or pull request within 5 minutes of opening.',
     status: BadgeStatus.Active,
+    rarity: 'Common',
+    category: 'Contribution',
     color: 'shadow-blue-500/20',
     tiers: [
       { tier: BadgeTier.Base, description: 'Close within 5 mins of opening.' }
@@ -24,6 +26,8 @@ export const BADGES: Badge[] = [
     emoji: '👯',
     description: 'Co-authored a commit that was merged.',
     status: BadgeStatus.Active,
+    rarity: 'Uncommon',
+    category: 'Collaboration',
     color: 'shadow-purple-500/20',
     tiers: [
       { tier: BadgeTier.Base, description: 'Co-author a merged commit.' },
@@ -43,6 +47,8 @@ export const BADGES: Badge[] = [
     emoji: '🦈',
     description: 'Opened pull requests that have been merged.',
     status: BadgeStatus.Active,
+    rarity: 'Rare',
+    category: 'Contribution',
     color: 'shadow-emerald-500/20',
     tiers: [
       { tier: BadgeTier.Bronze, description: '2 merged PRs.' },
@@ -61,6 +67,8 @@ export const BADGES: Badge[] = [
     emoji: '🧠',
     description: 'Answers accepted on GitHub Discussions.',
     status: BadgeStatus.Active,
+    rarity: 'Rare',
+    category: 'Community',
     color: 'shadow-pink-500/20',
     tiers: [
       { tier: BadgeTier.Bronze, description: '2 accepted answers.' },
@@ -79,6 +87,8 @@ export const BADGES: Badge[] = [
     emoji: '🤪',
     description: 'Merged a pull request without code review.',
     status: BadgeStatus.Active,
+    rarity: 'Uncommon',
+    category: 'Contribution',
     color: 'shadow-yellow-500/20',
     tiers: [
       { tier: BadgeTier.Base, description: 'Merge a PR without review.' }
@@ -95,6 +105,8 @@ export const BADGES: Badge[] = [
     emoji: '💖',
     description: 'Sponsoring an open source project via GitHub Sponsors.',
     status: BadgeStatus.Active,
+    rarity: 'Common',
+    category: 'Community',
     color: 'shadow-rose-500/20',
     tiers: [
       { tier: BadgeTier.Base, description: 'Sponsor a project.' }
@@ -111,6 +123,8 @@ export const BADGES: Badge[] = [
     emoji: '🌟',
     description: 'Created a repository that received many stars.',
     status: BadgeStatus.Active,
+    rarity: 'Legendary',
+    category: 'Community',
     color: 'shadow-amber-400/20',
     tiers: [
       { tier: BadgeTier.Bronze, description: '16 stars.' },
@@ -129,6 +143,8 @@ export const BADGES: Badge[] = [
     emoji: '❄️',
     description: 'Contributed code to a repository archived in the Arctic Code Vault.',
     status: BadgeStatus.Retired,
+    rarity: 'Rare',
+    category: 'Contribution',
     notes: 'Snapshot taken on 02/02/2020. No longer earnable.'
   },
   {
@@ -137,6 +153,8 @@ export const BADGES: Badge[] = [
     emoji: '🚁',
     description: 'Contributed to a repository used in the Mars 2020 Helicopter mission.',
     status: BadgeStatus.Retired,
+    rarity: 'Legendary',
+    category: 'Contribution',
     notes: 'Legacy badge for specific contributors.'
   },
   {
@@ -144,14 +162,18 @@ export const BADGES: Badge[] = [
     name: 'GitHub Pro',
     emoji: '💎',
     description: 'Active subscriber to GitHub Pro.',
-    status: BadgeStatus.Program
+    status: BadgeStatus.Program,
+    rarity: 'Common',
+    category: 'Program',
   },
   {
     id: 'developer-program',
     name: 'Developer Program',
     emoji: '⚡',
     description: 'Member of the GitHub Developer Program.',
-    status: BadgeStatus.Program
+    status: BadgeStatus.Program,
+    rarity: 'Uncommon',
+    category: 'Program',
   },
   {
     id: 'security-bug-bounty',
@@ -159,6 +181,8 @@ export const BADGES: Badge[] = [
     emoji: '🛡️',
     description: 'Hunted down a security vulnerability.',
     status: BadgeStatus.Program,
+    rarity: 'Legendary',
+    category: 'Program',
     notes: 'Awarded manually by GitHub security team.'
   }
 ];

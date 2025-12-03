@@ -9,47 +9,55 @@ const GuideItem: React.FC<{ badge: Badge }> = ({ badge }) => {
   if (!badge.earnGuide) return null;
 
   return (
-    <div className="border border-github-border rounded-lg bg-github-dark overflow-hidden transition-all duration-300 hover:border-github-muted">
+    <div className={`border rounded-xl bg-github-dark/50 overflow-hidden transition-all duration-300 ${isOpen ? 'border-github-accent/30 shadow-lg shadow-black/20' : 'border-github-border hover:border-github-border/80'}`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-4 text-left focus:outline-none focus:bg-github-border/30 hover:bg-github-border/20"
+        className="w-full flex items-center justify-between p-5 text-left focus:outline-none group"
       >
-        <div className="flex items-center space-x-3">
-          <span className="text-2xl">{badge.emoji}</span>
-          <span className="font-bold text-white text-lg">
-            How to earn <span className="text-github-accent">{badge.name}</span>
+        <div className="flex items-center space-x-4">
+          <span className={`text-2xl transition-transform duration-300 ${isOpen ? 'scale-110' : 'group-hover:scale-110'}`}>{badge.emoji}</span>
+          <span className="font-bold text-github-light text-lg group-hover:text-white transition-colors">
+            Earn <span className={isOpen ? 'text-github-accent' : ''}>{badge.name}</span>
           </span>
         </div>
-        {isOpen ? <ChevronUp className="text-github-muted" /> : <ChevronDown className="text-github-muted" />}
+        <div className={`p-2 rounded-full transition-all duration-300 ${isOpen ? 'bg-github-accent/10 text-github-accent rotate-180' : 'bg-github-border/20 text-github-muted group-hover:bg-github-border/40'}`}>
+          <ChevronDown className="w-5 h-5" />
+        </div>
       </button>
 
       {isOpen && (
-        <div className="p-4 sm:p-6 bg-github-darker border-t border-github-border animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="space-y-6">
+        <div className="px-5 pb-6 pt-2 bg-github-darker/30 border-t border-github-border/30 animate-in fade-in slide-in-from-top-1 duration-200">
+          <div className="space-y-6 pl-2 sm:pl-12">
             <div>
-              <h4 className="text-sm font-semibold text-github-light mb-3 flex items-center">
-                <span className="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs mr-2">1</span>
-                Steps to Unlock
-              </h4>
-              <ol className="relative border-l border-github-border ml-3 space-y-4">
+              <ol className="relative border-l-2 border-github-border/40 space-y-6 my-2">
                 {badge.earnGuide.map((step, idx) => (
-                  <li key={idx} className="mb-2 ml-6">
-                    <span className="absolute flex items-center justify-center w-4 h-4 bg-github-border rounded-full -left-2 ring-4 ring-github-darker"></span>
-                    <p className="text-sm text-github-light">{step}</p>
+                  <li key={idx} className="ml-6 relative">
+                    <span className="absolute -left-[31px] top-0 flex items-center justify-center w-7 h-7 bg-github-card border-2 border-github-border rounded-full text-xs font-bold text-github-muted shadow-sm">
+                      {idx + 1}
+                    </span>
+                    <p className="text-github-light/90 leading-relaxed text-base">{step}</p>
                   </li>
                 ))}
               </ol>
             </div>
 
             {badge.proTips && (
-              <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4">
-                <div className="flex items-start">
-                  <Lightbulb className="w-5 h-5 text-yellow-400 mt-0.5 mr-3 flex-shrink-0" />
+              <div className="bg-yellow-500/5 border border-yellow-500/10 rounded-xl p-5 relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-2 opacity-10">
+                  <Lightbulb size={64} />
+                </div>
+                <div className="flex items-start relative z-10">
+                  <div className="p-2 bg-yellow-500/10 rounded-lg mr-4">
+                     <Lightbulb className="w-5 h-5 text-yellow-400" />
+                  </div>
                   <div>
-                    <h5 className="text-sm font-bold text-yellow-400 mb-1">Pro Tip</h5>
-                    <ul className="list-disc list-inside text-sm text-github-light/90 space-y-1">
+                    <h5 className="text-sm font-bold text-yellow-500 uppercase tracking-wide mb-2">Pro Tip</h5>
+                    <ul className="space-y-2">
                       {badge.proTips.map((tip, i) => (
-                        <li key={i}>{tip}</li>
+                        <li key={i} className="text-sm text-github-light/90 flex items-start">
+                          <span className="mr-2 text-yellow-500/50">•</span>
+                          {tip}
+                        </li>
                       ))}
                     </ul>
                   </div>
@@ -67,18 +75,20 @@ const GuideSection: React.FC = () => {
   const guides = BADGES.filter(b => b.earnGuide && b.earnGuide.length > 0);
 
   return (
-    <section id="guides" className="py-16 border-t border-github-border bg-github-darker/50">
+    <section id="guides" className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-github-darker/50 -z-10"></div>
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-github-border to-transparent opacity-50"></div>
+      
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center space-x-3 mb-8">
-           <div className="p-2 bg-blue-500/10 rounded-lg">
-             <BookOpen className="w-6 h-6 text-blue-400" />
-           </div>
-           <h2 className="text-3xl font-bold text-white">Detailed Earning Guides</h2>
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center p-3 bg-blue-500/10 rounded-2xl mb-4">
+             <BookOpen className="w-8 h-8 text-blue-400" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-github-light mb-4">Mastery Guides</h2>
+          <p className="text-github-muted text-lg max-w-2xl mx-auto">
+            Deep dive into the specific steps required to unlock each achievement.
+          </p>
         </div>
-        
-        <p className="text-github-muted mb-8 text-lg">
-          Follow these step-by-step instructions to add these achievements to your profile.
-        </p>
 
         <div className="space-y-4">
           {guides.map(badge => (
